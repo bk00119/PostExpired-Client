@@ -10,7 +10,7 @@ import Browse from "./routes/browse"
 import Stores from "./routes/stores";
 import Saved from "./routes/saved";
 import More from "./routes/more";
-import Google from "./components.jsx"
+import Google from "./components/google.jsx"
 
 
 console.log("Connection Established")
