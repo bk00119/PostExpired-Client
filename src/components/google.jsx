@@ -34,4 +34,4 @@ const Google = () => {
   );
 }
 
-export default App;
+export default Google;
