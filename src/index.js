@@ -4,26 +4,23 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import App from "./App";
+
 import Home from "./routes/home"
 import Browse from "./routes/browse"
 import Stores from "./routes/stores";
 import Saved from "./routes/saved";
 import More from "./routes/more";
-import Google from "./components.jsx"
-
-
-console.log("Connection Established")
+import Google from "./components/google"
+import App from "./App"
 
 const root = ReactDOM.createRoot(
   document.getElementById("root")
 );
 root.render(
   <div>
-    
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} >
+          <Route path="/" element={<App />} >
           <Route path = "home" element = {<Home />}/>
           <Route path = "browse" element = {<Browse />} />
           <Route path="stores" element={<Stores/>} />
@@ -40,5 +37,6 @@ root.render(
         </Route>
       </Routes>
     </BrowserRouter>
+    <Google />
   </div>
 );
