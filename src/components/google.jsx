@@ -2,7 +2,7 @@ import GoogleLogin from 'react-google-login';
 
 const Google = () => {
 
-  var REACT_APP_GOOGLE_CLIENT_ID = "1088621816105-ndmppqog3fng702c9lhdenb1rck5he0o.apps.googleusercontent.com";
+  var REACT_APP_GOOGLE_CLIENT_ID = "1009896832838-og5i0guhj3bea9hujrptahc119agajlm.apps.googleusercontent.com";
 
   const handleFailure = (result) => {
     console.log(result);
