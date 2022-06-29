@@ -22,6 +22,7 @@ const Google = () => {
             <GoogleLogin
               onSuccess={credentialResponse => {
                 console.log(credentialResponse);
+                console.log(credentialResponse.getName)
               }}
               onError={() => {
                 console.log('Login Failed');
