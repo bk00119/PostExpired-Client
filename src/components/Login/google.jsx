@@ -1,4 +1,4 @@
-import GoogleLogin from 'react-google-login';
+import { GoogleLogin , GoogleOAuthProvider } from '@react-oauth/google';
 
 const Google = () => {
 
@@ -17,17 +17,17 @@ const Google = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Google Authentication</h1>
         <div>
-          <GoogleLogin
-            className="login"
-            clientId = {REACT_APP_GOOGLE_CLIENT_ID}
-            onSuccess = {handleLogin}
-            buttonText = "Log in with Google"
-            onFailure = {handleFailure}
-            cookiePolicy = {'single_host_origin'}
-          >
-          </GoogleLogin>
+          <GoogleOAuthProvider clientId={REACT_APP_GOOGLE_CLIENT_ID}>
+            <GoogleLogin
+              onSuccess={credentialResponse => {
+                console.log(credentialResponse);
+              }}
+              onError={() => {
+                console.log('Login Failed');
+              }}
+            />
+          </GoogleOAuthProvider>
         </div>
       </header>
     </div>
