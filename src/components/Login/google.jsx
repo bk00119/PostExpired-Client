@@ -1,5 +1,5 @@
 import { GoogleLogin , GoogleOAuthProvider } from '@react-oauth/google';
-// import jsonwebtoken from 'jsonwebtoken'
+import jwt_decode from "jwt-decode";
 
 const Google = () => {
 
@@ -9,10 +9,25 @@ const Google = () => {
     console.log(result);
   }
 
-  const handleLogin = (googleData) => {
-    alert("asldflasjfdljas;");
-    console.log("fuck u");
-    console.log(googleData);
+  function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  const handleLogin = (encryptedGoogleData) => {
+    document.cookie = "jwt_google="+encryptedGoogleData.credential;
+    const userInfo = jwt_decode(encryptedGoogleData.credential);
+    console.log(userInfo);
   }
 
   return (
@@ -21,10 +36,7 @@ const Google = () => {
         <div>
           <GoogleOAuthProvider clientId={REACT_APP_GOOGLE_CLIENT_ID}>
             <GoogleLogin
-              onSuccess={credentialResponse => {
-                console.log(credentialResponse);
-                console.log(credentialResponse.getName)
-              }}
+              onSuccess={handleLogin}
               onError={() => {
                 console.log('Login Failed');
               }}
