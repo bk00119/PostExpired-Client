@@ -9,8 +9,8 @@ import {
   import Stores from "./routes/stores";
   import Saved from "./routes/saved";
   import More from "./routes/more";
-  import Google from "./components/google"
-  import Navbar from "./components/navbar"
+  import Google from "./components/Login/google"
+  import Navbar from "./components/Navbar/navbar"
 
 export default function App() {
     return (
