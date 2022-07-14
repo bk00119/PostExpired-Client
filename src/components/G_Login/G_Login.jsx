@@ -4,7 +4,7 @@ import { useEffect , useState } from 'react';
 import { useSelector , useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { createUser , getUserByGoogleId } from "../../actions/users";
+import { getUserByGoogleId } from "../../actions/users";
 
 const G_Login = () => {
   const navigate = useNavigate();
