@@ -1,23 +1,18 @@
-import {
-    BrowserRouter,
-    Routes,
-    Route,
-  } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
   
-  import Home from "./routes/home"
-  import Browse from "./routes/browse"
-  import Stores from "./routes/stores";
-  import Saved from "./routes/saved";
-  import More from "./routes/more";
-  import Google from "./components/Login/google"
-  import Navbar from "./components/Navbar/navbar"
+import pageRoutes from "./routes/pageRoutes";
+import Navbar from "./components/Navbar/navbar";
 
 export default function App() {
+    const allPageRoutes = pageRoutes.map((linkComponent) => {
+        return <Route exact key={linkComponent.path} path={linkComponent.path} element={linkComponent.element} />;
+    });
+    
     return (
-        <div>
-            <BrowserRouter>
+        <BrowserRouter>
+            <Navbar />
             <Routes>
-                <Route path="/" element={<Navbar />} >
+                {/* <Route path="/" element={<Navbar />} >
                 <Route path = "home" element = {<Home />}/>
                 <Route path = "browse" element = {<Browse />} />
                 <Route path="stores" element={<Stores/>} />
@@ -30,11 +25,12 @@ export default function App() {
                         <p>There's nothing here!</p>
                     </main>
                 }
-            />
-                </Route>
+                />
+                </Route> */}
+                {pageRoutes.map((route) => (
+                    <Route key={route.path} exact path={route.path} element={route.element} />
+                ))}
             </Routes>
-            </BrowserRouter>
-            <Google />
-        </div>
+        </BrowserRouter>
     )
 }
