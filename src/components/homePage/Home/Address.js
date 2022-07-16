@@ -53,7 +53,7 @@ export default function Address() {
           )}
       </PlacesAutocomplete>
     </div>
-  )
+  );
 }
 
 

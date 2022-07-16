@@ -2,10 +2,12 @@ import { GoogleLogin , GoogleOAuthProvider } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
 import { useEffect , useState } from 'react';
 import { useSelector , useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-import { createUser , getUserByGoogleId } from "../../actions/users";
+import { getUserByGoogleId } from "../../actions/users";
 
-const Google = () => {
+const G_Login = () => {
+  const navigate = useNavigate();
   const REACT_APP_GOOGLE_CLIENT_ID = "1009896832838-og5i0guhj3bea9hujrptahc119agajlm.apps.googleusercontent.com";
   const user = useSelector((state) => state.users);
   const dispatch = useDispatch();
@@ -43,7 +45,10 @@ const Google = () => {
 
   useEffect(() => {
     if(userDataLoaded){
-      console.log("reqUser", user, user.data);
+      console.log("reqUser", user.data);
+      if(user.data==null) {
+        navigate("/register/"+getCookie("jwt_google"));
+      }
     }
   }, [userDataLoaded]);
 
@@ -65,4 +70,4 @@ const Google = () => {
   );
 }
 
-export default Google;
+export default G_Login;
